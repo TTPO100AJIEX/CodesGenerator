@@ -1,6 +1,0 @@
-[
-    "fuzzystrmatch.sql",
-    "create_json_cast.sql",
-    "table_columns.sql",
-    "clamp.sql"
-]

@@ -1,4 +1,4 @@
-import PostgreSQL from "common/databases/PostgreSQL/PostgreSQL.js";
+import PostgreSQL from "common/PostgreSQL/PostgreSQL.js";
 import config from "common/configs/config.json" assert { type: "json" };
 
 const Database = new PostgreSQL({ ...config.postgreSQL, database: "postgres" });

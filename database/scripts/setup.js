@@ -1,7 +1,7 @@
 import fs from 'fs';
 import url from 'url';
 import path from 'path';
-import { Database } from 'common/databases/PostgreSQL/PostgreSQL.js';
+import { Database } from 'common/PostgreSQL/PostgreSQL.js';
 
 async function readQueries(folder)
 {
