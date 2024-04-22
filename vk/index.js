@@ -1,10 +1,12 @@
 import WebSocket from 'ws';
 
-const res = await fetch("https://api.vk.com/method/streaming.getServerUrl?v=5.199", {
+const res = await fetch("https://api.vk.com/method/groups.getLongPollServer?v=5.199&group_id=192568540", {
+    method: "POST",
     headers: {
-        "Authorization": "Bearer a3bff939a3bff939a3bff939dca3cb98e4aa3bfa3bff939fc3a77940d0f425061c77fce"
+        "Authorization": "Bearer ttt"
     }
 });
+console.log(await res.json())
 const { response } = await res.json();
 
 
