@@ -1,0 +1,6 @@
+[
+    "roles.sql",
+    "textchannels.sql",
+    "voicechannels.sql",
+    "categorychannels.sql"
+]

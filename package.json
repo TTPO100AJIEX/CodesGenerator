@@ -1,0 +1,31 @@
+{
+  "name": "codesgenerator",
+  "type": "module",
+  "author": "TTPO100AJIEX",
+  "license": "MIT",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "vk": "node vk/index.js",
+    "telegram": "node telegram/index.js",
+    "db:backup": "node database/scripts/backup.js",
+    "db:delete": "node database/scripts/delete.js",
+    "db:create": "node database/scripts/create.js",
+    "db:setup": "node database/scripts/setup.js",
+    "db:fill": "node database/scripts/fill.js",
+    "db:full": "npm run db:create && npm run db:setup && npm run db:fill",
+    "db:recreate": "npm run db:backup && npm run db:delete && npm run db:full"
+  },
+  "dependencies": {
+    "common": "file:common",
+    "jsonpointer": "^5.0.1",
+    "pg": "^8.11.5",
+    "pg-format": "^1.0.4",
+    "postgres-interval": "^4.0.2",
+    "ws": "^8.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TTPO100AJIEX/CodesGenerator.git"
+  }
+}

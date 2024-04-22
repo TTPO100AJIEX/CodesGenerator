@@ -1,0 +1,6 @@
+[
+    "embeds_fields_limit.sql",
+    "embed_length.sql",
+    "messages_embeds_limit.sql",
+    "message_length.sql"
+]

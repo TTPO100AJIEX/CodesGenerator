@@ -1,0 +1,9 @@
+CREATE FUNCTION create_member() RETURNS TRIGGER
+LANGUAGE plpgsql VOLATILE LEAKPROOF STRICT PARALLEL SAFE
+AS $$
+BEGIN
+	IF (NEW.guild_id IS NOT NULL) AND (NEW.member_id IS NOT NULL) THEN
+		INSERT INTO members(guild_id, id) VALUES (NEW.guild_id, NEW.member_id) ON CONFLICT(guild_id, id) DO NOTHING;
+	END IF;
+	RETURN NEW;
+END $$;

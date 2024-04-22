@@ -1,0 +1,15 @@
+[
+    "interactions_history.sql",
+
+    "website_access",
+    "timed_roles",
+    
+    "giveaways",
+    "rolemanagement",
+    "inventory",
+    "activityroles",
+    "donationroles",
+
+    "moderation",
+    "economics"
+]

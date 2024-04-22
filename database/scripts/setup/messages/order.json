@@ -1,0 +1,11 @@
+[
+    "embeds.sql",
+    "fields.sql",
+    "messages.sql",
+    
+    "fields_view.sql",
+    "embeds_view.sql",
+    "messages_view.sql",
+
+    "constraints"
+]

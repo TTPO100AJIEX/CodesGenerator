@@ -1,0 +1,17 @@
+{
+    "stage": "testing",
+    "application":
+    {
+        "name": "CodesGenerator"
+    },
+
+
+    "postgreSQL":
+    {
+        "host": "localhost",
+        "port": 5432,
+        "database": "codesgenerator",
+        "user": "postgres",
+        "password": "F3gH3!0jEq"
+    }
+}

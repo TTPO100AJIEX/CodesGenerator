@@ -1,0 +1,11 @@
+[
+    "utils",
+    "data_types.sql",
+    "website_objects",
+    "messages",
+    "guilds",
+    "members",
+    "modules",
+    "guilds_view",
+    "payments"
+]
