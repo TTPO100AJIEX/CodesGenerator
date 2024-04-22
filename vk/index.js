@@ -1,5 +1,5 @@
-import { Database } from "common/PostgreSQL/PostgreSQL.js";
 import Application from "./Application.js";
+import { Database } from "common/PostgreSQL/PostgreSQL.js";
 import config from "common/configs/config.json" assert { type: "json" };
 
 const app = new Application(config.vk);

@@ -1,27 +1,18 @@
 import TelegramBot from 'node-telegram-bot-api';
+import { Database } from "common/PostgreSQL/PostgreSQL.js";
+import config from "common/configs/config.json" assert { type: "json" };
 
-const token = 'ttt';
+const app = new TelegramBot(config.telegram.token, { polling: true });
 
-const bot = new TelegramBot(token, {polling: true});
+app.on('message', async ({ text, chat }) =>
+{
+    const read_query_string = `SELECT * FROM promocodes WHERE name = $1 AND uses > 0`;
+    const promocode = await Database.execute(read_query_string, [ text ], { one_response: true });
+    if (!promocode) return app.sendMessage(chat.id, config.telegram.no_promocode);
 
-bot.on('message', (msg) => {
-    console.log(msg);
-    const chatId = msg.chat.id;
-  
-    // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId, 'Received your message');
+    const write_query_string = `UPDATE promocodes SET uses = uses - 1 WHERE name = $1`;
+    return Promise.all([
+        Database.execute(write_query_string, [ promocode.name ]),
+        app.sendMessage(chat.id, promocode.message ?? config.telegram.activated)
+    ]); 
 });
-
-/*
-Боту в личные сообщения будут присылать промокоды сгенерированные ботом вконтакте.
-Бот должен проверить промокод (использовали его или нет). Если промокод был использован или его не существует,
-бот должен прислать в ответ сообщение: Промокод отсутствует в базе данных
-Если промокод сгенерированный ботов вконтакте не был использован - бот должен прислать в ответ сообщение: Промокод активирован.
-
-Если промокод был создан ручным способом на несколько использований, бот должен присылать в ответ на активный промокод
-сообщение с текстом (текст ответа пункт 1.2), который был указан при создании промокода с помощью команды.
-Если промокод использовали и он закончился - бот также должен прислать сообщение: Промокод отсутствует в базе данных.
-
-На любые нестандартные действия пользователей, которые не были описаны, бот должен присылать ответ: Воспользуйтесь
-инструкцией в группе вконтакте либо обратитесь к администрации.
-*/
